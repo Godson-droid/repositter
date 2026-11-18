@@ -757,11 +757,10 @@ Groq route, each evidenced first-hand:
   requests without blocking the run. Groq use today: 37 relay
   requests (5 in the killed attempt, 32 in run 09) plus 1 models
   read; the day's token budget is barely touched by comparison
-  with 2026-11-17's 136. Publication of the repo
-  `Godson-droid/repositter` and the dashboard at
-  https://godson-droid.github.io/repositter/ is the next step of
-  this run; the verified-live status is recorded here once both
-  read back publicly. Still open after this run: the F20
-  summary-ok fix, a record-stage retry for scratch #3, and the
-  DoraHacks Buidl submission and demo video, which are not part of
-  this run.
+  with 2026-11-17's 136. Publication verified live in this run:
+  repo https://github.com/Godson-droid/repositter (public, main
+  0db17ef) and dashboard https://godson-droid.github.io/repositter/
+  (Pages 200, JS bundle 200, gh-pages 45e2ec5), both read back
+  publicly. Still open after this run: the F20 summary-ok fix, a
+  record-stage retry for scratch #3, and the DoraHacks Buidl
+  submission and demo video, which are not part of this run.

@@ -15,6 +15,7 @@ from __future__ import annotations
 import base64
 import os
 import sys
+import time
 from pathlib import Path
 
 os.environ["NO_PROXY"] = "localhost,127.0.0.1"
@@ -44,12 +45,25 @@ def collect(root: Path) -> list[tuple[str, Path]]:
     return files
 
 
+def _call_with_retry(method: str, path: str, body: dict | None = None,
+                     attempts: int = 3):
+    """One GitHub API call with retries on transient 5xx responses."""
+    last: tuple[int, object] = (0, None)
+    for attempt in range(attempts):
+        status, payload = github_api._request(method, path, body)
+        last = (status, payload)
+        if status < 500:
+            return status, payload
+        time.sleep(2 * (attempt + 1))
+    return last
+
+
 def push_branch(branch: str, root: Path, message: str, parents: list[str]) -> str:
     files = collect(root)
     items = []
     for rel, p in files:
         data = base64.b64encode(p.read_bytes()).decode()
-        status, blob = github_api._request(
+        status, blob = _call_with_retry(
             "POST", f"/repos/{OWNER}/{REPO}/git/blobs",
             {"content": data, "encoding": "base64"})
         if status not in (200, 201):
@@ -111,10 +125,13 @@ def main() -> int:
         "main", PROJECT_DIR,
         "RepoSitter: Cortensor Hackathon #5 entry, triage agent on OpenMinion 0.1.21 (approval-gate proof run-09)",
         parents)
+    status, gh_ref = github_api._request(
+        "GET", f"/repos/{OWNER}/{REPO}/git/refs/heads/gh-pages")
+    gh_parents = [gh_ref["object"]["sha"]] if status == 200 else []
     push_branch(
         "gh-pages", PROJECT_DIR / "web" / "dist",
         "Dashboard build (web/dist)",
-        [])
+        gh_parents)
     status, pages = github_api._request(
         "GET", f"/repos/{OWNER}/{REPO}/pages")
     if status == 200:
