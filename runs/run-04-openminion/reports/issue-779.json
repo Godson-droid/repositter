@@ -1,0 +1,13 @@
+{
+  "item_number": 779,
+  "item_kind": "issue",
+  "title": "self_improvement: max_applied_notes and min_token_overlap are accepted, persisted and never enforced",
+  "category": "bug",
+  "priority": "medium",
+  "summary": "Two configuration settings in runtime.self_improvement (max_applied_notes and min_token_overlap) are parsed and persisted but never enforced by runtime consumers. Operators setting these values experience silent no-op behavior while a hardcoded context limit remains active. Enforcing these parameters in note ranking and context retrieval will resolve the inconsistency.",
+  "suggested_labels": [
+    "bug",
+    "area:config"
+  ],
+  "suggested_next_action": "Verify if a contributor PR is actively addressing this issue, and update context retrieval and ranking logic to enforce max_applied_notes and min_token_overlap."
+}

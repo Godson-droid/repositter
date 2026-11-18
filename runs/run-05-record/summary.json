@@ -1,0 +1,67 @@
+{
+  "run_name": "run-05-record",
+  "target": "openminion/openminion",
+  "provider": "gemini",
+  "model": "gemini-3.6-flash",
+  "started_at": "2026-11-17T04:42:02Z",
+  "purpose": "Record stage only: write memory records for the reports classified in run-04-openminion, whose own record stage failed on the Gemini rate limit (HTTP 429).",
+  "stages": {
+    "record": {
+      "ok": false,
+      "run_id": "c03de15ef39f485fbbcd64fdad91cf45",
+      "error": "Agent returned without any tool call (tool_calls_count 0, brain_status waiting_user): 'I could not safely update the task conditions. Please restate the current task and its required conditions.' No memory.write was executed by this run.",
+      "relay": {
+        "requests": 4,
+        "http_429": 0,
+        "http_200": 4
+      }
+    },
+    "memory_verify": {
+      "ok": true,
+      "run_id": "621fb1effc7e43ee923ae60a553d5412",
+      "found_780": true,
+      "found_779": false,
+      "note": "The #780 record located by this search carries run-04's standard content with no origin note, so it was written by run-04's record stage before that stage failed on the rate limit (which evidently died on the #779 write, not before both). No record for #779 existed after this run. An earlier draft of this summary claimed found_779=true from a bare '#779' substring match against the verify agent saying the item was missing; that was wrong and is corrected here. The verify stage's relay window included 5 individual HTTP 429 responses that the SDK retried through; the stage itself completed.",
+      "relay_cumulative_from_run_start": {
+        "requests": 14,
+        "http_429": 5,
+        "http_200": 9
+      }
+    }
+  },
+  "reports": [
+    {
+      "item_number": 780,
+      "item_kind": "issue",
+      "title": "plugins: enabled external plugins never activate on the one-shot CLI run path (hooks silently skipped, no error)",
+      "category": "bug",
+      "priority": "high",
+      "summary": "External plugins configured and enabled fail to activate during one-shot CLI execution, resulting in hooks being silently skipped. Direct calls to the plugin registry work as expected, but the `openminion run` CLI path bypasses plugin initialization. This prevents expected plugin hooks from executing without raising any warnings or errors.",
+      "suggested_labels": [
+        "bug",
+        "area:cli",
+        "area:plugins"
+      ],
+      "suggested_next_action": "Investigate CLI runner initialization logic to ensure plugin registry configuration is properly loaded and activated before processing commands."
+    },
+    {
+      "item_number": 779,
+      "item_kind": "issue",
+      "title": "self_improvement: max_applied_notes and min_token_overlap are accepted, persisted and never enforced",
+      "category": "bug",
+      "priority": "medium",
+      "summary": "Two configuration settings in runtime.self_improvement (max_applied_notes and min_token_overlap) are parsed and persisted but never enforced by runtime consumers. Operators setting these values experience silent no-op behavior while a hardcoded context limit remains active. Enforcing these parameters in note ranking and context retrieval will resolve the inconsistency.",
+      "suggested_labels": [
+        "bug",
+        "area:config"
+      ],
+      "suggested_next_action": "Verify if a contributor PR is actively addressing this issue, and update context retrieval and ranking logic to enforce max_applied_notes and min_token_overlap."
+    }
+  ],
+  "relay_total": {
+    "requests": 14,
+    "http_429": 5,
+    "http_200": 9
+  },
+  "correction": "Corrected 2026-11-17 by the finish-day2 pass: this run wrote nothing; see stages above and run-05b-record for the completed #779 record."
+}

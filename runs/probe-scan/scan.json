@@ -1,0 +1,33 @@
+{
+  "fetched_count": 25,
+  "new_item_numbers": [
+    757,
+    755,
+    754,
+    753,
+    752,
+    751,
+    750,
+    749,
+    748,
+    747,
+    746,
+    745,
+    744,
+    743,
+    742,
+    741,
+    740,
+    739,
+    738,
+    737,
+    736,
+    735,
+    734,
+    733
+  ],
+  "already_triaged_numbers": [
+    759
+  ],
+  "notes": "One item (#759) was already triaged from previous scan. Remaining 24 items are new and require triage classification."
+}

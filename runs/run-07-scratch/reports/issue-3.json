@@ -1,0 +1,13 @@
+{
+  "item_number": 3,
+  "item_kind": "issue",
+  "title": "README does not say where run artifacts are written",
+  "category": "docs",
+  "priority": "low",
+  "summary": "The issue reports that the README lacks information about where the demo's output artifacts are stored. The user cannot locate the reports and suggests adding a brief description of the artifact layout, such as the `runs/<run-name>/` directory and its contents. Updating the documentation will help users find generated reports.",
+  "suggested_labels": [
+    "documentation",
+    "enhancement"
+  ],
+  "suggested_next_action": "Add a short section to the README describing the artifact layout and the files generated in the `runs/<run-name>/` directory."
+}

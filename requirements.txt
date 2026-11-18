@@ -1,0 +1,4 @@
+# Pinned to the version this project was built and tested against.
+# The OpenMinion docs pin 0.1.20 in places, but PyPI serves 0.1.21 and
+# 0.1.21 is what all runs in this repo used (see FINDINGS.md).
+openminion==0.1.21

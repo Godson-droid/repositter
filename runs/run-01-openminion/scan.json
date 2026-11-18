@@ -1,0 +1,22 @@
+{
+  "fetched_count": 25,
+  "new_item_numbers": [
+    771,
+    770,
+    769,
+    768,
+    767,
+    766,
+    765,
+    764,
+    763,
+    762,
+    761,
+    760,
+    759
+  ],
+  "already_triaged_numbers": [
+    759
+  ],
+  "notes": "All 25 items were fetched from the repository. Item #759 was previously triaged on 2026-11-15 (feature, high priority, labels: feature,rate-limit,retry,provider,performance). All other 24 items in this scan are new and require triage."
+}

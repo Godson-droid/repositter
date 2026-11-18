@@ -1,0 +1,23 @@
+{
+  "run_name": "run-01-openminion",
+  "target": "openminion/openminion",
+  "model": "cohere/north-mini-code:free",
+  "started_at": "2026-11-15T11:53:04Z",
+  "stages": {
+    "scan": {
+      "ok": false,
+      "error": "ProviderError: EMPTY_PROVIDER_RESPONSE: Provider returned no usable entry response after configured retries",
+      "relay_requests": 5
+    },
+    "classify": [],
+    "classify_relay_requests": 0
+  },
+  "relay_requests_before": 0,
+  "fetched_count": 0,
+  "new_item_numbers": [],
+  "already_triaged_numbers": [],
+  "reports": [],
+  "relay_requests_after": 5,
+  "relay_requests_delta": 5,
+  "seconds": 23.4
+}

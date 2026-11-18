@@ -1,0 +1,12 @@
+{
+  "item_number": 2,
+  "item_kind": "issue",
+  "title": "Add a --dry-run flag that prints the plan without calling the model",
+  "category": "feature",
+  "priority": "low",
+  "summary": "The author proposes a new `--dry-run` command\u2011line flag to aid debugging by showing which items would be triaged and in what order, without consuming model requests. Implementing this flag would fetch items, compare them against memory, print the planned actions, and then exit before any model call.",
+  "suggested_labels": [
+    "enhancement"
+  ],
+  "suggested_next_action": "Add implementation of the `--dry-run` flag to the CLI that outputs the triage plan without invoking the model."
+}

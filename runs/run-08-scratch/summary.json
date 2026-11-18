@@ -1,0 +1,24 @@
+{
+  "run_name": "run-08-scratch",
+  "target": "Godson-droid/repositter-scratch",
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "started_at": "2026-11-17T12:20:14Z",
+  "stages": {
+    "scan": {
+      "ok": false,
+      "error": "ProviderError: RATE_LIMITED: The configured model provider could not continue this turn because it reported a quota, billing, or rate-limit block (groq rate limited: Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m7mjh5zjer9vv5b26nchdhs9` service tier `on_demand` on tokens per day (TPD): Limit 20...). Please retry shortly or check the provider quota/billing state and try again.",
+      "relay_requests": 13
+    },
+    "classify": [],
+    "classify_relay_requests": 0
+  },
+  "relay_requests_before": 0,
+  "fetched_count": 0,
+  "new_item_numbers": [],
+  "already_triaged_numbers": [],
+  "reports": [],
+  "relay_requests_after": 13,
+  "relay_requests_delta": 13,
+  "seconds": 331.9
+}

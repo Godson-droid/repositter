@@ -1,0 +1,16 @@
+{
+  "item_number": 759,
+  "item_kind": "issue",
+  "title": "llm: add a provider cooldown registry and honour Retry-After instead of a constant retry backoff",
+  "category": "feature",
+  "priority": "high",
+  "summary": "The issue proposes adding a provider cooldown registry and honoring the Retry-After header to improve rate limiting. Currently the retry mechanism uses a constant exponential backoff and ignores the Retry-After values sent by providers, leading to repeated attempts during rate limit windows. This feature will track per\u2011provider cooldown periods and respect provider\u2011specified retry delays.",
+  "suggested_labels": [
+    "feature",
+    "rate-limit",
+    "retry",
+    "provider",
+    "performance"
+  ],
+  "suggested_next_action": "Design and implement a provider cooldown registry that stores the time a provider hit a rate limit, and modify the retry loop to use the captured Retry-After value (or the registry) instead of the fixed backoff."
+}

@@ -1,0 +1,77 @@
+{
+  "run_name": "run-07-scratch",
+  "target": "Godson-droid/repositter-scratch",
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "started_at": "2026-11-17T11:51:41Z",
+  "purpose": "Scratch approval proof attempt (full pipeline with --approve-write). Terminated by the operator during the classify stage; see recovery_note.",
+  "stages": {
+    "scan": {
+      "ok": true,
+      "fetched_count": 3,
+      "new_item_numbers": [
+        3,
+        2,
+        1
+      ],
+      "already_triaged_numbers": []
+    },
+    "classify": [
+      {
+        "number": 3,
+        "ok": true
+      },
+      {
+        "number": 2,
+        "ok": true
+      },
+      {
+        "number": 1,
+        "ok": false,
+        "error": "no report produced; the stage entered an unbroken HTTP 429 stream (24 of the run's 52 relay requests) and the run was terminated"
+      }
+    ],
+    "record": {
+      "skipped": true,
+      "reason": "run terminated during classify"
+    },
+    "propose": {
+      "skipped": true,
+      "reason": "run terminated during classify; no label proposed, approved or applied"
+    }
+  },
+  "reports": [
+    {
+      "item_number": 2,
+      "item_kind": "issue",
+      "title": "Add a --dry-run flag that prints the plan without calling the model",
+      "category": "feature",
+      "priority": "low",
+      "summary": "The author proposes a new `--dry-run` command\u2011line flag to aid debugging by showing which items would be triaged and in what order, without consuming model requests. Implementing this flag would fetch items, compare them against memory, print the planned actions, and then exit before any model call.",
+      "suggested_labels": [
+        "enhancement"
+      ],
+      "suggested_next_action": "Add implementation of the `--dry-run` flag to the CLI that outputs the triage plan without invoking the model."
+    },
+    {
+      "item_number": 3,
+      "item_kind": "issue",
+      "title": "README does not say where run artifacts are written",
+      "category": "docs",
+      "priority": "low",
+      "summary": "The issue reports that the README lacks information about where the demo's output artifacts are stored. The user cannot locate the reports and suggests adding a brief description of the artifact layout, such as the `runs/<run-name>/` directory and its contents. Updating the documentation will help users find generated reports.",
+      "suggested_labels": [
+        "documentation",
+        "enhancement"
+      ],
+      "suggested_next_action": "Add a short section to the README describing the artifact layout and the files generated in the `runs/<run-name>/` directory."
+    }
+  ],
+  "relay_total": {
+    "requests": 52,
+    "http_429": 24,
+    "http_200": 14,
+    "note": "14x HTTP 400 also logged. Segment 11:51:41-12:19:02Z from runs/relay.log."
+  },
+  "recovery_note": "Terminated by the operator at 12:19Z after roughly ten minutes without a completed request (200 count frozen at 14 while 429s accumulated). The 429s carried x-ratelimit-remaining-tokens 8000 (the per-minute window untouched); the following run's scan error named the binding limit directly: tokens per day (TPD) for openai/gpt-oss-120b on the free tier. See FINDINGS.md F19. No GitHub write of any kind was made: all three scratch issues were read back unlabelled after the pass."
+}

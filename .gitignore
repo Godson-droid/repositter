@@ -1,0 +1,9 @@
+# OpenMinion home: live config (absolute paths), state DBs, memory store.
+# Regenerate with the steps in README.md; template in config/.
+.openminion/
+
+__pycache__/
+*.pyc
+
+# Relay request log is kept as budget evidence; rotate it locally if needed.
+# (It contains only timestamps, paths, model names, statuses and counts.)

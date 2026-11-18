@@ -1,0 +1,57 @@
+{
+  "run_name": "run-06-openminion",
+  "target": "openminion/openminion",
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "started_at": "2026-11-17T11:29:06Z",
+  "purpose": "Classification retry for openminion/openminion item 769 (failed on day 1 with the F5 prose-instead-of-JSON error), run through finish_day2.py's classify and record stages on the paced Groq route. The propose stage is not run: the approval gate stays held and no GitHub write is proposed or executed on this repo.",
+  "stages": {
+    "fetch": {
+      "ok": true,
+      "note": "item 769 confirmed open in pre-flight (GitHub API read)"
+    },
+    "classify": [
+      {
+        "number": 769,
+        "ok": true,
+        "salvaged": "undetermined: the driver process was killed by a runtime restart before it wrote its classify log; no typed-output validation failure for the classifier appears in telemetry. The report artifact is well-formed and was recorded verbatim."
+      }
+    ],
+    "record": {
+      "ok": true,
+      "evidence": "memory store read-back (post-recovery): record fact:triaged_openminion_openminion_769 in .openminion/memory/memory.db, event_time 2026-11-17T11:34:29Z, content matches the report (category=bug priority=high labels=bug,area:tools,platform:windows,priority:high); also present in the FTS index."
+    },
+    "memory_verify": {
+      "ok": false,
+      "note": "The driver's own verify stage never ran (process killed). A recovery verify run (finish_day2._verify_stage, run id 9fb6937d206f4239b5bacbc41fc1eabd, 1 memory.search tool call, 8 relay requests) reported the record absent from its search results; the recall layer returns a ranked set capped at 500 tokens, so a single search is not a census of the store. The store-level read-back above is the deciding evidence. See FINDINGS.md F19."
+    },
+    "propose": {
+      "skipped": true,
+      "reason": "approval gate held; no write proposed or executed"
+    }
+  },
+  "reports": [
+    {
+      "item_number": 769,
+      "item_kind": "issue",
+      "title": "[0.1.22] Runtime bootstrap fails on Windows (WinError 206) because browser-playwright artifact dirs are created under the CWD even when no browser tool is used",
+      "category": "bug",
+      "priority": "high",
+      "summary": "The runtime bootstrap fails on Windows when the current working directory path exceeds the MAX_PATH limit, because Playwright artifact directories are placed under the workspace root instead of the short OPENMINION_HOME path. This occurs even when no browser tools are enabled, causing the agent setup to abort with a WinError 206. The issue blocks Windows users from running openminion in deep project directories.",
+      "suggested_labels": [
+        "bug",
+        "area:tools",
+        "platform:windows",
+        "priority:high"
+      ],
+      "suggested_next_action": "Assign to the tools maintainer to adjust the Playwright artifact root handling to respect OPENMINION_HOME or allow explicit configuration, and add a test for long path scenarios on Windows."
+    }
+  ],
+  "relay_total": {
+    "requests": 15,
+    "http_429": 0,
+    "http_200": 7,
+    "note": "classify driver segment only (11:29:06-11:35:19Z, 8x HTTP 400, 7x HTTP 200, zero 429 under the F18 pacer). Recovery verify cost 8 further requests; the scan-probe verification attempt cost 13 and failed on a model tool hallucination (F19)."
+  },
+  "recovery_note": "The finish_day2 driver was killed by a Muse runtime restart at about 11:35Z, after the classify stage had written reports/issue-769.json and the record stage's memory.write had landed (11:34:29Z) but before record_result.json, memory_verify or summary.json could be written. This summary was reconstructed in the recovery pass from the surviving artifacts, the relay log and the memory store."
+}

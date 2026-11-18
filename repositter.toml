@@ -1,0 +1,33 @@
+# RepoSitter project configuration.
+# The target repo, the provider route and the model are values here,
+# never hard-coded in code.
+
+[target]
+owner = "openminion"
+repo = "openminion"
+
+[model]
+# Primary route: Groq (free tier) through the loopback relay, which
+# attaches the registered custom.groq credential. The SDK has a native
+# groq adapter (an OpenAI-compatible provider), so this route lives in
+# the providers.groq block of .openminion/agents.json with base_url
+# pointed at the relay, and agents.openminion.provider is "groq".
+# Earlier routes, kept wired in the relay: Google Gemini
+# (--provider gemini --model gemini-3.6-flash, profile provider
+# "openai") and the OpenRouter free tier fallback
+# (--provider openrouter --model cohere/north-mini-code:free, profile
+# provider "openrouter"). Exactly one model is pinned per route and no
+# paid fallback is configured anywhere.
+provider = "groq"
+primary = "openai/gpt-oss-120b"
+
+[relay]
+# Loopback relay that OpenMinion talks to as its OpenAI-compatible
+# endpoint. It attaches the registered provider credential (Gemini or
+# OpenRouter, per [model] provider) via the Muse surrogate mechanism;
+# see repositter/relay.py.
+port = 8377
+
+[limits]
+max_items_per_run = 3
+propose_label = true

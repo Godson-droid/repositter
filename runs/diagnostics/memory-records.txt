@@ -1,0 +1,3 @@
+Memory store: .openminion/memory/memory.db (queried 2026-11-15)
+
+8223f42d669b4842ac1fd51207093a01|agent:openminion|fact|fact:triaged_openminion_openminion_759|"Triaged issue #759 'llm: add a provider cooldown registry and honour Retry-After instead of a constant retry backoff': category=feature priority=high labels=feature,rate-limit,retry,provider,performance on 2026-11-15"

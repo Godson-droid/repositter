@@ -1,0 +1,30 @@
+[OK] config.exists: Config file found at /home/hatch/workspace/cortensor/repositter/.openminion/agents.json
+[WARN] identity.bundle: Identity profile is missing in IdentityCtl for agent 'openminion'.
+  remediation: Create/import a profile via `openminion identity upsert ...` or configure bundle import at startup.
+[OK] storage.ready: Storage schema is ready at /home/hatch/workspace/cortensor/repositter/.openminion/state/openminion.db
+[OK] provider.supported: Configured provider 'openrouter' is supported
+[OK] provider.openrouter.key: OpenRouter API key is configured via config
+[OK] skill.module.available: openminion.modules.skill module is available
+[OK] channels.enabled: Enabled channels list is present
+[OK] channels.default_in_enabled: Default channel 'console' is enabled
+[OK] plugins.enabled: Enabled plugins list is present
+[OK] runtime.bootstrap: Runtime context bootstrapped successfully
+[OK] security.gateway.bind_posture: Gateway host `127.0.0.1` is local-only.
+[OK] security.gateway.auth_posture: Gateway auth posture relies on local-only bind + protocol authz baseline.
+[OK] security.gateway.auth_rate_limit_posture: Auth rate-limit risk is low for local-only gateway bind.
+[OK] security.gateway.origin_policy_posture: Origin policy risk is low for local-only gateway bind.
+[OK] security.channel.dm_policy: DM policy is `pairing`.
+[OK] security.channel.group_policy: Group policy is `disabled`.
+[OK] security.channel.authenticity_policy: Inbound authenticity policy mode is `warn` (no external channels enabled).
+[OK] security.filesystem.config_permissions: Path permissions are not world-writable: /home/hatch/workspace/cortensor/repositter/.openminion/agents.json
+[OK] security.filesystem.storage_permissions: Path permissions are not world-writable: /home/hatch/workspace/cortensor/repositter/.openminion/state
+[OK] security.memory.retention_posture: Memory retention and compaction posture is bounded.
+[OK] security.filesystem.memory_permissions: Path permissions are not world-writable: /home/hatch/workspace/cortensor/repositter/.openminion/memory
+[OK] security.plugins.trust_posture: Plugin trust tiers and provenance posture are acceptable.
+[WARN] security.secrets.redaction_posture: Inline API secrets were found in config.
+  remediation: Prefer environment variables and keep config secret-free.
+[WARN] security.untrusted_content.boundary_posture: External content surfaces are enabled and require explicit boundary wrappers.
+  remediation: Ensure untrusted-content wrappers are applied before model/tool execution.
+[OK] security.execution.boundary.policy: Execution-boundary policy adapter is enforced for tool execution.
+[WARN] security.validate.summary: Security validate summary: critical=0, warn=2, info=13
+  remediation: Address critical and warning findings in security validation report.

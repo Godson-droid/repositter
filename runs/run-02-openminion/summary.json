@@ -1,0 +1,68 @@
+{
+  "run_name": "run-02-openminion",
+  "target": "openminion/openminion",
+  "model": "cohere/north-mini-code:free",
+  "started_at": "2026-11-16T00:58:05Z",
+  "stages": {
+    "scan": {
+      "ok": true,
+      "run_id": "77a27b4865e442758c22da75bf3b3dd6",
+      "relay_requests": 9
+    },
+    "classify": [
+      {
+        "number": 771,
+        "ok": true,
+        "run_id": "6a38a777122845ea904328a083c7d85f"
+      },
+      {
+        "number": 769,
+        "ok": false,
+        "error": "AgentOutputValidationError: Reply did not validate against TriageReport: 1 validation error for TriageReport\n  Invalid JSON: expected value at line 1 column 1 [type=json_invalid, input_value='openminion: {\\n\"item_num...n\u2011browser setups.\"\\n}', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.14/v/json_invalid"
+      },
+      {
+        "number": 768,
+        "ok": false,
+        "error": "AgentOutputValidationError: Reply did not validate against TriageReport: 1 validation error for TriageReport\n  Invalid JSON: expected value at line 1 column 1 [type=json_invalid, input_value='openminion: {\"item_numbe...fig diff)\",\"category\":\"', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.14/v/json_invalid"
+      }
+    ],
+    "classify_relay_requests": 12,
+    "record": {
+      "ok": true,
+      "run_id": "9f2f6f812b24466a8a8e645637733230",
+      "relay_requests": 7
+    },
+    "propose": {
+      "ok": false,
+      "error": "ProviderError: RATE_LIMITED: The configured model provider could not continue this turn because it reported a quota, billing, or rate-limit block (openrouter rate limited: Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day: https://openrouter.ai/settings/credits?utm_source=a...). Please retry shortly or check the provider quota/billing state and try again."
+    }
+  },
+  "relay_requests_before": 0,
+  "fetched_count": 25,
+  "new_item_numbers": [
+    771,
+    769,
+    768
+  ],
+  "already_triaged_numbers": [
+    770
+  ],
+  "reports": [
+    {
+      "item_number": 771,
+      "item_kind": "pull_request",
+      "title": "fix(storage): treat literal empty storage.path like omitted path (Refs #766)",
+      "category": "bug",
+      "priority": "critical",
+      "summary": "The PR fixes a bug where setting storage.path to an empty string in agents.json caused the database path to resolve incorrectly, leading to sqlite3.OperationalError. It treats empty strings like None while preserving whitespace filenames and existing path handling, and adds regression tests and config bootstrap. An Unreleased note is also added to document the fix.",
+      "suggested_labels": [
+        "bug",
+        "storage"
+      ],
+      "suggested_next_action": "Run CI for the storage module and merge once tests pass."
+    }
+  ],
+  "relay_requests_after": 43,
+  "relay_requests_delta": 43,
+  "seconds": 132.6
+}

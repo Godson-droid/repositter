@@ -1,0 +1,62 @@
+{
+  "run_name": "run-09-scratch",
+  "target": "Godson-droid/repositter-scratch",
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "started_at": "2026-11-18T00:16:26Z",
+  "stages": {
+    "scan": {
+      "ok": true,
+      "run_id": "6785e3edaad84637955dcd5df1cdf134",
+      "relay_requests": 11
+    },
+    "classify": [
+      {
+        "number": 3,
+        "ok": true,
+        "run_id": "1d6a0934b6dd4820891dede63f86d59d"
+      }
+    ],
+    "classify_relay_requests": 7,
+    "record": {
+      "ok": true,
+      "run_id": "907bf20226994b879c27c6d49074fda9",
+      "relay_requests": 6
+    },
+    "propose": {
+      "item": 3,
+      "label": "documentation",
+      "respond_kind": "policy_confirmation_prompt",
+      "thread_id": "repositter-Godson-droid-repositter-scratch-run-09-scratch:cce3860719df4f7f9d0640ef3f67291b",
+      "resumed_text": "openminion: Label 'documentation' has been added to issue #3 in Godson-droid/repositter-scratch.",
+      "labels_after": [
+        "documentation"
+      ],
+      "label_landed": true
+    }
+  },
+  "relay_requests_before": 0,
+  "fetched_count": 3,
+  "new_item_numbers": [
+    3
+  ],
+  "already_triaged_numbers": [],
+  "reports": [
+    {
+      "item_number": 3,
+      "item_kind": "issue",
+      "title": "README does not say where run artifacts are written",
+      "category": "docs",
+      "priority": "low",
+      "summary": "The reporter ran the demo but could not locate the generated output reports. The current README explains setup and execution but does not document that artifacts are stored in `runs/<run-name>/` or describe the expected files. Adding a brief section on the artifact layout would improve clarity for users.",
+      "suggested_labels": [
+        "documentation",
+        "enhancement"
+      ],
+      "suggested_next_action": "Update the README to include a short section describing the artifact layout and the location of generated reports."
+    }
+  ],
+  "relay_requests_after": 32,
+  "relay_requests_delta": 32,
+  "seconds": 800.1
+}

@@ -1,0 +1,51 @@
+{
+  "run_name": "run-05b-record",
+  "target": "openminion/openminion",
+  "provider": "gemini",
+  "model": "gemini-3.6-flash",
+  "started_at": "2026-11-17T04:49:52Z",
+  "purpose": "Record stage only: write memory records for the reports classified in run-04-openminion, whose own record stage failed on the Gemini rate limit (HTTP 429).",
+  "stages": {
+    "record": {
+      "ok": true,
+      "run_id": "04919d5a3d244c94bd073ee9f64e4cba",
+      "relay": {
+        "requests": 17,
+        "http_429": 15,
+        "http_200": 2
+      }
+    },
+    "memory_verify": {
+      "ok": true,
+      "run_id": "0f2525481c68414bbf52582285e4a58a",
+      "found_779": true,
+      "relay": {
+        "requests": 35,
+        "http_429": 29,
+        "http_200": 6
+      },
+      "relay_note": "Relay counts in this summary are cumulative from the run's start: the record stage's own window was 17 requests (15 HTTP 429, 2 HTTP 200) and the run total through verification was 35 requests (29 HTTP 429, 6 HTTP 200). Both stages completed through the throttling via SDK retries, but the provider was rate limiting hard by the end of this run."
+    }
+  },
+  "reports": [
+    {
+      "item_number": 779,
+      "item_kind": "issue",
+      "title": "self_improvement: max_applied_notes and min_token_overlap are accepted, persisted and never enforced",
+      "category": "bug",
+      "priority": "medium",
+      "summary": "Two configuration settings in runtime.self_improvement (max_applied_notes and min_token_overlap) are parsed and persisted but never enforced by runtime consumers. Operators setting these values experience silent no-op behavior while a hardcoded context limit remains active. Enforcing these parameters in note ranking and context retrieval will resolve the inconsistency.",
+      "suggested_labels": [
+        "bug",
+        "area:config"
+      ],
+      "suggested_next_action": "Verify if a contributor PR is actively addressing this issue, and update context retrieval and ranking logic to enforce max_applied_notes and min_token_overlap."
+    }
+  ],
+  "relay_total": {
+    "requests": 35,
+    "http_429": 29,
+    "http_200": 6
+  },
+  "stop_note": "After this run, the finish-day2 pass stopped per its stop rule: with 29 of the last 35 relay requests answered HTTP 429, steps 2 (classification retries for #769/#768), 3 (scratch approval proof) and 5 (publication) were not attempted in this pass."
+}

@@ -1,0 +1,14 @@
+{
+  "item_number": 780,
+  "item_kind": "issue",
+  "title": "plugins: enabled external plugins never activate on the one-shot CLI run path (hooks silently skipped, no error)",
+  "category": "bug",
+  "priority": "high",
+  "summary": "External plugins configured and enabled fail to activate during one-shot CLI execution, resulting in hooks being silently skipped. Direct calls to the plugin registry work as expected, but the `openminion run` CLI path bypasses plugin initialization. This prevents expected plugin hooks from executing without raising any warnings or errors.",
+  "suggested_labels": [
+    "bug",
+    "area:cli",
+    "area:plugins"
+  ],
+  "suggested_next_action": "Investigate CLI runner initialization logic to ensure plugin registry configuration is properly loaded and activated before processing commands."
+}

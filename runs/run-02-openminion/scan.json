@@ -1,0 +1,13 @@
+{
+  "fetched_count": 25,
+  "new_item_numbers": [
+    771,
+    769,
+    768,
+    767
+  ],
+  "already_triaged_numbers": [
+    770
+  ],
+  "notes": "Found 25 open items (issues and pull requests) in the repository. Item #770 is already triaged from memory. Items #771, #769, #768, and #767 appear new and need triage."
+}

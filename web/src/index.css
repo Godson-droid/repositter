@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-night-950 text-moon-100 font-sans antialiased;
+    font-feature-settings:
+      'ss01' on,
+      'cv11' on;
+  }
+
+  ::selection {
+    background: rgba(124, 108, 255, 0.85);
+    color: #000000;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #050507;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #23232e;
+    border-radius: 8px;
+    border: 2px solid #050507;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #34343f;
+  }
+}
+
+@layer utilities {
+  /* Tabular figures so data columns never jitter */
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+}

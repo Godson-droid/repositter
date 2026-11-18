@@ -1,0 +1,13 @@
+{
+  "stage": {
+    "ok": true,
+    "run_id": "9fb6937d206f4239b5bacbc41fc1eabd",
+    "found_769": false
+  },
+  "relay": {
+    "requests": 8,
+    "http_429": 0,
+    "http_200": 4
+  },
+  "verified_at": "2026-11-17T11:40:49Z"
+}
