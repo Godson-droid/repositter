@@ -44,6 +44,15 @@ Every run writes its artifacts to `runs/<run-name>/`: `summary.json`
 `record_result.json`, and `approval_held.json` / `approval_resumed.json`
 when the propose stage runs.
 
+## Headline findings
+
+1. One run costs far more model requests than its visible tool calls, about twelve requests for a four tool call scan stage.
+2. A run can return success while doing nothing at all, so stages are judged by tool call counts and read backs, never by the absence of an error.
+3. The Groq free tier token per minute limit is spent in seconds by the SDK helper call bursts; a token bucket pacer in the relay fixed it.
+4. The memctl CLI could not run in the standard layout; filed as issue 805, maintainer confirmed, fix delivered as pull request 815.
+5. Typed outputs are fragile with small free models; an orchestrator side salvage extracts the first balanced JSON object.
+6. An ingested skill is invisible until admitted, and nothing in the product says so.
+
 ## Setup
 
 Requirements: Python 3.11+, a Groq API key (the free tier is enough;
