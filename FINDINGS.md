@@ -764,3 +764,11 @@ Groq route, each evidenced first-hand:
   publicly. Still open after this run: the F20 summary-ok fix, a
   record-stage retry for scratch #3, and the DoraHacks Buidl
   submission and demo video, which are not part of this run.
+
+## Update: the memctl fix, pull request 815
+
+F9 reported that memctl, the documented memory operator surface, failed out of the box in the standard layout. That report was filed upstream as issue 805. The maintainer confirmed the bug and set the contract the fix had to meet: only an absent implicit default may derive a config, explicit paths still fail when missing, and malformed YAML still fails.
+
+The fix was delivered as pull request 815. Revision 3 is pushed, rebased onto current dev, at head 2ed3cdf9. Validation on the integrated tree: the memory suite passed 940 tests, the critical suite passed 559 with 4 skips, the config suite passed 29, Ruff is clean, and the mypy budget sits at its baseline. Before the push, two independent loophole passes, one of them running 42 adversarial runtime cases, found no route that lets a case that must refuse derive a config.
+
+The pull request is open and awaiting re review. Issue 805 stays open until it lands.
