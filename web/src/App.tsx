@@ -1,5 +1,6 @@
 import { Nav } from './components/Nav'
 import { Hero } from './components/Hero'
+import { Headlines } from './components/Headlines'
 import { Stats } from './components/Stats'
 import { Triage } from './components/Triage'
 import { Runs } from './components/Runs'
@@ -15,6 +16,7 @@ export default function App() {
       <Nav />
       <main>
         <Hero />
+        <Headlines />
         <Stats />
         <Triage />
         <Runs />
